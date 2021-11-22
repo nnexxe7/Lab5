@@ -16,8 +16,6 @@ namespace Lab5
     {
         OpenFileDialog ofd = new OpenFileDialog();
 
-
-
         public Form1()
         {
             InitializeComponent();
@@ -25,7 +23,6 @@ namespace Lab5
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ofd.Filter = "txt files (*.txt)|.txt|All Files (*.*)|*.*";
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
@@ -41,7 +38,6 @@ namespace Lab5
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ofd.Filter = "txt files (*.txt)|.txt|All Files (*.*)|*.*";
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
@@ -80,7 +76,7 @@ namespace Lab5
                 string path = textBox2.Text;
                 if (checkBox1.CheckState == CheckState.Checked)
                 {
-                    using (Stream s = File.Create(path+".rar"))
+                    using (Stream s = File.Create(path))
                     {
                         using (Stream ds = new DeflateStream(s, CompressionMode.Compress))
                         {
@@ -99,12 +95,31 @@ namespace Lab5
                 // robi sie szyfrowanie
                 if (checkBox2.CheckState == CheckState.Checked)
                 {
-                    File.Encrypt(textBox2.Text);
+                    string path = textBox2.Text;
+                    string text = File.ReadAllText(ofd.FileName);
+                    text = text.Replace("o", "0");
+                    text = text.Replace("i", "1");
+                    text = text.Replace("e", "3");
+                    text = text.Replace("a", "4");
+                    text = text.Replace("s", "5");
+                    text = text.Replace("t", "7");
+                    text = text.Replace("b", "8");
+                    File.WriteAllText(path, text);
                 }
-                if (checkBox2.CheckState == CheckState.Unchecked)
-                {
-                    File.Decrypt(textBox2.Text);
-                }
+            }
+            // robi sie odszyfrowanie
+            if (checkBox3.CheckState == CheckState.Checked)
+            {
+                string path = textBox2.Text;
+                string text = File.ReadAllText(ofd.FileName);
+                text = text.Replace("0", "o");
+                text = text.Replace("1", "i");
+                text = text.Replace("3", "e");
+                text = text.Replace("4", "a");
+                text = text.Replace("5", "s");
+                text = text.Replace("7", "t");
+                text = text.Replace("8", "b");
+                File.WriteAllText(path, text);
             }
             if (checkBox1.CheckState == CheckState.Checked & checkBox2.CheckState == CheckState.Checked)
             {
@@ -114,6 +129,26 @@ namespace Lab5
         }
 
         private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
 
         }
