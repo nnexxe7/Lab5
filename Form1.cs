@@ -123,7 +123,7 @@ namespace Lab5
             }
             if (checkBox1.CheckState == CheckState.Checked & checkBox2.CheckState == CheckState.Checked)
             {
-                //robi sie to i to
+                //robi sie to i to.
             }
 
         }
