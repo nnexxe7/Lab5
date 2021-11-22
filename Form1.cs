@@ -68,11 +68,11 @@ namespace Lab5
         {
             if (checkBox1.CheckState == CheckState.Unchecked & checkBox2.CheckState == CheckState.Unchecked)
             {
-                //nic sie nie robi
+                //nic sie nie robi.
             }
             if (checkBox1.CheckState == CheckState.Checked & checkBox2.CheckState == CheckState.Unchecked)
             {
-                // robi sie kompresja
+                // robi sie kompresja.
                 string path = textBox2.Text;
                 if (checkBox1.CheckState == CheckState.Checked)
                 {
@@ -92,7 +92,7 @@ namespace Lab5
 
             if (checkBox1.CheckState == CheckState.Unchecked & checkBox2.CheckState == CheckState.Checked)
             {
-                // robi sie szyfrowanie
+                // robi sie szyfrowanie.
                 if (checkBox2.CheckState == CheckState.Checked)
                 {
                     string path = textBox2.Text;
